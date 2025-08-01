@@ -1,132 +1,127 @@
-import React, { useEffect, useRef } from 'react';
-import { Shield, Zap, BookOpen, Wrench, Lightbulb, Globe } from 'lucide-react';
+import React from 'react';
+import { Shield, Zap, BookOpen, Wrench, Lightbulb, Globe, ArrowRight, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
 
 const AboutSection = () => {
-  const sectionRef = useRef(null);
-  const piDeviceRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!piDeviceRef.current) return;
-      
-      const scrollY = window.scrollY;
-      const rotation = scrollY * 0.1;
-      
-      piDeviceRef.current.style.transform = `rotateY(${rotation}deg) rotateX(${rotation * 0.5}deg)`;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const features = [
     {
       icon: Shield,
       title: "Offline-First Design",
-      description: "Complete educational and communication resources available without internet dependency. Perfect for remote areas with limited connectivity."
+      description: "Complete educational and communication resources available without internet dependency. Perfect for remote areas with limited connectivity.",
+      color: "blue"
     },
     {
       icon: Zap,
       title: "Plug & Play Setup", 
-      description: "Simple deployment with minimal technical expertise required. Auto-configuring access point with user-friendly interface."
+      description: "Simple deployment with minimal technical expertise required. Auto-configuring access point with user-friendly interface.",
+      color: "green"
     },
     {
       icon: BookOpen,
       title: "Rich Content Library",
-      description: "Curated educational materials, Wikipedia archives, medical resources, and communication tools all accessible locally."
+      description: "Curated educational materials, Wikipedia archives, medical resources, and communication tools all accessible locally.",
+      color: "purple"
     },
     {
       icon: Wrench,
       title: "Low Maintenance",
-      description: "Robust, energy-efficient design built for continuous operation in challenging environments with minimal upkeep."
+      description: "Robust, energy-efficient design built for continuous operation in challenging environments with minimal upkeep.",
+      color: "orange"
     },
     {
       icon: Lightbulb,
       title: "Scalable Solution",
-      description: "Easily expandable network that can grow with community needs. Multiple units can be linked for broader coverage."
+      description: "Easily expandable network that can grow with community needs. Multiple units can be linked for broader coverage.",
+      color: "cyan"
     },
     {
       icon: Globe,
       title: "Global Impact",
-      description: "Designed for deployment in schools, clinics, community centers, and disaster relief areas worldwide."
+      description: "Designed for deployment in schools, clinics, community centers, and disaster relief areas worldwide.",
+      color: "pink"
     }
   ];
 
+  const colorClasses = {
+    blue: "bg-blue-50 text-blue-600 border-blue-100",
+    green: "bg-green-50 text-green-600 border-green-100",
+    purple: "bg-purple-50 text-purple-600 border-purple-100",
+    orange: "bg-orange-50 text-orange-600 border-orange-100",
+    cyan: "bg-cyan-50 text-cyan-600 border-cyan-100",
+    pink: "bg-pink-50 text-pink-600 border-pink-100"
+  };
+
   return (
-    <section id="about" className="py-20 px-4 relative" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto">
-        {/* 3D Section Header */}
-        <div className="text-center mb-16 perspective-1000">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 transform hover:rotateX-5 transition-all duration-500 preserve-3d">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 animate-gradient-x">VerseZero</span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto transform hover:translateZ-10 transition-transform duration-300 preserve-3d">
-            Revolutionary Raspberry Pi technology that brings internet connectivity to the most remote corners of the world
-          </p>
-        </div>
-
-        {/* 3D Raspberry Pi Showcase */}
-        <div className="text-center mb-16 perspective-1000">
-          <div className="relative inline-block">
-            <div 
-              ref={piDeviceRef}
-              className="w-80 h-60 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-3xl border border-blue-400/30 flex items-center justify-center mx-auto mb-6 backdrop-blur-sm shadow-2xl hover:shadow-blue-500/40 transition-all duration-700 transform hover:scale-110 hover:rotateY-12 preserve-3d group"
-            >
-              <div className="text-6xl group-hover:scale-110 transition-transform duration-500">📟</div>
-              
-              {/* 3D Status Indicators */}
-              <div className="absolute -top-3 -right-3 w-6 h-6 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50 transform hover:scale-125 transition-transform duration-300"></div>
-              <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-blue-400 rounded-full animate-pulse delay-1000 shadow-lg shadow-blue-400/50 transform hover:scale-125 transition-transform duration-300"></div>
-              <div className="absolute top-4 -left-4 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-500 shadow-lg shadow-purple-400/50 transform hover:scale-125 transition-transform duration-300"></div>
-              
-              {/* 3D Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl transform group-hover:scale-125 transition-transform duration-700"></div>
-            </div>
+    <section id="about" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <CheckCircle className="h-4 w-4" />
+            <span>About VerseOS</span>
           </div>
-          <p className="text-gray-300 max-w-2xl mx-auto transform hover:translateZ-5 transition-transform duration-300 preserve-3d">
-            This compact Raspberry Pi device may look ordinary, but it delivers Wi-Fi connectivity 
-            where traditional internet infrastructure fails. Meet the silent hero of offline connectivity.
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Revolutionary Technology for
+            <span className="text-blue-600"> Underserved Communities</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            VerseOS brings internet connectivity and essential digital services to remote areas using innovative Raspberry Pi technology and offline-first architecture.
           </p>
         </div>
 
-        {/* 3D Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
-          {features.map((feature, index) => (
-            <Card 
-              key={index} 
-              className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-500 group transform hover:scale-105 hover:translateY-4 hover:rotateX-5 hover:shadow-2xl hover:shadow-blue-500/20 preserve-3d"
-              style={{
-                animationDelay: `${index * 100}ms`
-              }}
-            >
-              <CardContent className="p-6 relative">
-                {/* 3D Icon Container */}
-                <div className="flex items-center mb-4">
-                  <div className="p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 preserve-3d shadow-lg">
-                    <feature.icon className="h-6 w-6 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
-                  </div>
+        {/* Device Showcase */}
+        <div className="mb-20">
+          <Card className="max-w-4xl mx-auto bg-gradient-to-br from-blue-50 to-indigo-50 border-0 shadow-2xl overflow-hidden">
+            <CardContent className="p-12 text-center">
+              <div className="relative inline-block mb-8">
+                <div className="w-64 h-48 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl flex items-center justify-center">
+                  <div className="text-6xl">📟</div>
                 </div>
-                
-                {/* 3D Text Content */}
-                <h3 className="text-xl font-semibold text-white mb-3 transform group-hover:translateZ-10 transition-transform duration-300 preserve-3d">
+                {/* Status indicators */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg animate-pulse"></div>
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-lg animate-pulse" style={{animationDelay: '1s'}}></div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Raspberry Pi Network Hub</h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                This compact device delivers Wi-Fi connectivity where traditional internet infrastructure fails. 
+                The silent hero of offline connectivity for underserved communities worldwide.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {features.map((feature, index) => (
+            <Card key={index} className="bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 group hover:border-gray-200">
+              <CardContent className="p-6">
+                <div className={`inline-flex p-3 rounded-xl mb-4 ${colorClasses[feature.color]}`}>
+                  <feature.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed transform group-hover:translateZ-5 transition-transform duration-300 preserve-3d">
-                  {feature.description}
-                </p>
-                
-                {/* 3D Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* 3D Floating Background Elements */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl animate-float-slow transform-gpu"></div>
-          <div className="absolute bottom-1/4 right-10 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl animate-float-delayed transform-gpu"></div>
+        {/* CTA Section */}
+        <div className="text-center">
+          <Card className="bg-gradient-to-r from-blue-600 to-blue-700 border-0 text-white inline-block">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold mb-4">Ready to Deploy VerseOS?</h3>
+              <p className="text-blue-100 mb-6 max-w-md">
+                Join the mission to connect underserved communities worldwide with our revolutionary operating system.
+              </p>
+              <Button className="bg-white text-blue-600 hover:bg-blue-50 font-semibold">
+                Learn More
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
