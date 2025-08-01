@@ -1,4 +1,4 @@
-// Mock data for VerseZero project
+// Mock data for VerseOS project
 export const mockTeamData = {
   teams: [
     {
@@ -107,21 +107,21 @@ export const mockTeamData = {
 };
 
 export const mockProjectData = {
-  timeline: "2024-2025 Academic Year",
+  timeline: "4 Months (May - August 2025)",
   institution: "Southern Alberta Institute of Technology (SAIT)",
   teamSize: "7 Members",
-  goal: "Bridge Digital Divide with Raspberry Pi Technology",
+  goal: "Revolutionary OS for Underserved Communities",
   technologies: [
     { name: "Raspberry Pi 4", icon: "🍓" },
-    { name: "Linux OS", icon: "🐧" }, 
-    { name: "Access Point", icon: "📡" },
-    { name: "Python Scripts", icon: "🐍" },
+    { name: "Linux Kernel", icon: "🐧" }, 
+    { name: "Mesh Network", icon: "📡" },
+    { name: "Python Core", icon: "🐍" },
     { name: "Local Storage", icon: "💾" },
-    { name: "Web Interface", icon: "🌐" }
+    { name: "Web Services", icon: "🌐" }
   ],
   achievements: [
-    { metric: "100%", description: "Offline Functionality" },
-    { metric: "50+", description: "Connected Devices" },
-    { metric: "24/7", description: "Uptime Reliability" }
+    { metric: "100%", description: "Offline Autonomy" },
+    { metric: "100+", description: "Concurrent Users" },
+    { metric: "24/7", description: "System Uptime" }
   ]
 };
